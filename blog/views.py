@@ -1,8 +1,10 @@
 from django.http import Http404
 from django.shortcuts import render
-from .models import Entry, Category
+from .models import Entry
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def overview(request, category="Allgemein"):
     try:
         #category = Category.objects.filter(name=category)
@@ -15,7 +17,7 @@ def overview(request, category="Allgemein"):
                    #'category':  category[0]
                    })
 
-
+@login_required
 def year(request, year):
     try:
         entries = Entry.objects.filter(created__year=year)
@@ -24,6 +26,7 @@ def year(request, year):
     return render(request, 'blog/list.html', {'entries': entries})
 
 
+@login_required
 def month(request, year, month):
     try:
         entries = Entry.objects.filter(created__year=year,
@@ -33,6 +36,7 @@ def month(request, year, month):
     return render(request, 'blog/list.html', {'entries': entries})
 
 
+@login_required
 def day(request, year, month, day):
     try:
         entries = Entry.objects.filter(created__year=year,
