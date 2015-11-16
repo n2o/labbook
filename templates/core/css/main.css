@@ -7,6 +7,9 @@ a {
 h1 {
   padding-bottom: 0.5em; }
 
+img {
+  max-width: 100%; }
+
 .labbook-entry {
   padding-bottom: 1em; }
 

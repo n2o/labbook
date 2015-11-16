@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     # 3rd party
     'login',
     'autoslug',
+    'filer',
     'easy_thumbnails',
     'pytz',
     'pagedown',
@@ -122,6 +123,9 @@ TEMPLATES = [
         },
     },
 ]
+
+# Filer configuration
+FILER_CANONICAL_URL = 'share/'
 
 # Configure Easy Thumbnails
 THUMBNAIL_ALIASES = {

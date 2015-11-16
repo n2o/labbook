@@ -2,9 +2,9 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-
 from . import views
 from django.contrib.flatpages import views as flatpageviews
+
 
 # Include these two lines to use the core/admin.py file
 admin.autodiscover()
@@ -16,6 +16,8 @@ urlpatterns = [
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('login.urls', namespace='login')),
+
+    url(r'^filer/', include('filer.urls')),
 
     # Own Apps
     url(r'^blog/', include('blog.urls', namespace='blog')),
