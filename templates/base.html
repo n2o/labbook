@@ -1,5 +1,3 @@
-{% load staticfiles %}
-
 <!DOCTYPE html>
 <html lang="de">
   <head>
@@ -12,6 +10,8 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>Labbook by Christian Meter</title>
+
+    {% load staticfiles %}
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
@@ -48,6 +48,18 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="{% url 'blog:year' year=2015 %}">2015</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Ideas <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="{% url 'integration-in-websites' %}">Integration in Websites</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Development <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="{% url 'ff-extension' %}">Firefox Extension</a></li>
+              </ul>
+            </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Paper <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">

@@ -39,4 +39,7 @@
   {% else %}
     <p>No entries found.</p>
   {% endif %}
+  <p class="labbook-change text-muted">
+    <a href="{% url 'admin:index' %}blog/entry/add" class="text-muted">add</a>
+  </p>
 {% endblock %}

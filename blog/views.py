@@ -1,5 +1,6 @@
 from django.http import Http404
 from django.shortcuts import render
+from django.db.models import Q
 from .models import Entry
 
 
@@ -24,7 +25,6 @@ def year(request, year):
     return render(request, 'blog/list.html', {'entries': entries})
 
 
-
 def month(request, year, month):
     try:
         entries = Entry.objects.filter(created__year=year,
@@ -34,12 +34,19 @@ def month(request, year, month):
     return render(request, 'blog/list.html', {'entries': entries})
 
 
-
 def day(request, year, month, day):
     try:
         entries = Entry.objects.filter(created__year=year,
                                        created__month=month,
                                        created__day=day)
+    except Entry.DoesNotExist:
+        raise Http404("Dieser Beitrag konnte leider nicht gefunden werden.")
+    return render(request, 'blog/list.html', {'entries': entries})
+
+
+def tag(request, tag):
+    try:
+        entries = Entry.objects.filter(Q(tags=tag))
     except Entry.DoesNotExist:
         raise Http404("Dieser Beitrag konnte leider nicht gefunden werden.")
     return render(request, 'blog/list.html', {'entries': entries})

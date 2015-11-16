@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^(?P<year>[0-9]+)/$', views.year, name='year'),
     url(r'^(?P<year>[0-9]+)/(?P<month>[0-9]+)$', views.month, name='month'),
     url(r'^(?P<year>[0-9]+)/(?P<month>[0-9]+)/(?P<day>[0-9]+)$', views.day, name='day'),
+    url(r'^tag/(?P<tag>[\w-]+)/$', views.tag, name='tag'),
 ]

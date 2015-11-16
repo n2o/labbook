@@ -23,7 +23,11 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls', namespace='blog')),
 
     # Flatpages
-    url(r'^paper/general-idea/$', flatpageviews.flatpage, {'url': '/paper/general-idea/'}, name='general-idea'),
+    url(r'^papers/general-idea/$', flatpageviews.flatpage, {'url': '/papers/general-idea/'}, name='general-idea'),
+    url(r'^ideas/integration-in-websites/$', flatpageviews.flatpage, {'url': '/ideas/integration-in-websites/'}, name='integration-in-websites'),
+    url(r'^dev/ff-extension/$', flatpageviews.flatpage, {'url': '/dev/ff-extension/'}, name='ff-extension'),
+    #url(r'^(?P<url>.*/)$', flatpageviews.flatpage, name='page'),
+
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
