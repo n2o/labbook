@@ -4,6 +4,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from . import views
+from django.contrib.flatpages import views as flatpageviews
+
+# Include these two lines to use the core/admin.py file
+admin.autodiscover()
+import core.admin
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -14,5 +19,9 @@ urlpatterns = [
 
     # Own Apps
     url(r'^blog/', include('blog.urls', namespace='blog')),
+
+    # Flatpages
+    url(r'^paper/general-idea/$', flatpageviews.flatpage, {'url': '/paper/general-idea/'}, name='general-idea'),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)\
               + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

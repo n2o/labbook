@@ -1,6 +1,17 @@
 {% extends "base.html" %}
+{% load markdown_deux_tags %}
+
+{% block heading %}
+  <h2>{{ flatpage.title }}</h2>
+{% endblock %}
 
 {% block content %}
-    <h2>{{ flatpage.title }}</h2>
-    <p> {{ flatpage.content }}</p>
+    <p>
+      {{ flatpage.content|markdown }}
+    </p>
+
+    <p class="labbook-change text-muted">
+      <a href="{% url 'admin:index' %}flatpages/flatpage/{{ flatpage.id }}/change" class="text-muted">edit</a>
+      <a href="{% url 'admin:index' %}flatpages/flatpage/{{ flatpage.id }}/delete" class="text-muted">delete</a>
+    </p>
 {% endblock %}
