@@ -11,7 +11,12 @@
       <div class="row">
         <div class="col-md-8">
           <h4>
-            {{ entry.created|date:"j. N Y" }}{% if entry.author %} by {{ entry.author }}{% endif %}
+            {% if entry.title %}
+              {{ entry.title }}
+            {% endif %}
+            <small>
+              {{ entry.created|date:"j. N Y" }}{% if entry.author %} by {{ entry.author }}{% endif %}
+            </small>
           </h4>
         </div>
         <div class="col-md-4 text-right">
