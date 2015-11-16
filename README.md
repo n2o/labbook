@@ -1,6 +1,6 @@
-# Django 1.9 Beta 1 Labbook
+# Django 1.9 Beta 1 Lab Notebook
 
-Create your own labbook with Django
+Create your own Lab notebook with Django
 
 Featuring:
 * Django 1.9b1
