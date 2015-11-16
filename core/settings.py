@@ -23,6 +23,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Internationalization
+# https://docs.djangoproject.com/en/1.7/topics/i18n/
+LANGUAGE_CODE = 'en-en'
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
 SITE_ID = 1
 
 # Application definition
@@ -75,20 +83,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
-
-LANGUAGE_CODE = 'en-en'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
-
-USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
