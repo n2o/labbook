@@ -7,6 +7,12 @@ a {
 h1 {
   padding-bottom: 0.5em; }
 
+.labbook-entry {
+  padding-bottom: 1em; }
+
+.labbook-change a {
+  font-size: 90%; }
+
 html {
   position: relative;
   min-height: 100%; }

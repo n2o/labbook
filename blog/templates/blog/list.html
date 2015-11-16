@@ -2,33 +2,39 @@
 {% load markdown_deux_tags %}
 
 {% block heading %}
-  <h1>Entries</h1>
+
 {% endblock %}
 
 {% block content %}
   {% if entries %}
     {% for entry in entries %}
-      <div class="row">
-        <div class="col-md-8">
-          <h4>
-            {% if entry.title %}
-              {{ entry.title }}
-            {% endif %}
-            <small>
-              {{ entry.created|date:"j. N Y" }}{% if entry.author %} by {{ entry.author }}{% endif %}
-            </small>
-          </h4>
-        </div>
-        <div class="col-md-4 text-right">
+      <div class="labbook-entry">
+        <h3>
+          {% if entry.title %}
+            {{ entry.title }}<br>
+          {% endif %}
+        </h3>
+        <h4>
+          <small>
+            {{ entry.created|date:"j. N Y" }}
+          </small>
+        </h4>
+
+        <p>
+          {{ entry.content|markdown }}
+        </p>
+
+        <p>
           {% for tag in entry.tags.all %}
             <span class="badge">{{ tag }}</span>
           {% endfor %}
-        </div>
-      </div>
+        </p>
 
-      <p>
-        {{ entry.content|markdown }}
-      </p>
+        <p class="labbook-change text-muted">
+          <a href="{% url 'admin:index' %}blog/entry/{{ entry.id }}/change" class="text-muted">edit</a>
+          <a href="{% url 'admin:index' %}blog/entry/{{ entry.id }}/delete" class="text-muted">delete</a>
+        </p>
+      </div>
     {% endfor %}
   {% else %}
     <p>No entries found.</p>

@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Django Skeleton</title>
+    <title>Labbook by Christian Meter</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
@@ -64,6 +64,7 @@
             {% endcomment %}
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://stackoverflow.com/editing-help">SO Cheat Sheet</a></li>
             <li><a href="{% url 'admin:index' %}">Admin</a></li>
             <!--<li><a href="/account">Login</a></li>
             <li><a href="/account/register">Registrieren</a></li>-->
@@ -73,12 +74,6 @@
     </nav>
 
     <div id="main">
-      <div class="" id="header-img">
-        <div class="container">
-          {% block headerimg %}{% endblock %}
-        </div>
-      </div>
-
       <div class="container">
         {% block heading %}{% endblock %}
       </div>

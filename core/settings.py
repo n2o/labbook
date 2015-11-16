@@ -126,7 +126,7 @@ TEMPLATES = [
 # Configure Easy Thumbnails
 THUMBNAIL_ALIASES = {
     '': {
-        'news_front': {'size': (440, 165), 'crop': True},
+
     },
 }
 
