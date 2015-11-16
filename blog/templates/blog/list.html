@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+
+{% block heading %}
+  <h1>Entries</h1>
+{% endblock %}
+
+{% block content %}
+  {% if entries %}
+    {% for entry in entries %}
+      <div class="row">
+        <div class="col-md-8">
+          <h4>
+            {{ entry.created|date:"j. N Y" }}{% if entry.author %} by {{ entry.author }}{% endif %}
+          </h4>
+        </div>
+        <div class="col-md-4 text-right">
+          {% for tag in entry.tags.all %}
+            <span class="badge">{{ tag }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <p>
+        {{ entry.content|markdown }}
+      </p>
+    {% endfor %}
+  {% else %}
+    <p>No entries found.</p>
+  {% endif %}
+{% endblock %}

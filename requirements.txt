@@ -1,0 +1,9 @@
+Django==1.9b1
+django-autoslug==1.9.3
+django-markdown-deux==1.0.5
+django-pagedown==0.1.0
+easy-thumbnails==2.2.1
+markdown2==2.3.0
+Pillow==3.0.0
+pytz==2015.7
+wheel==0.26.0
