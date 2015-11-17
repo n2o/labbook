@@ -19,7 +19,7 @@ def overview(request, category="Allgemein"):
 
 def year(request, year):
     try:
-        entries = Entry.objects.filter(created__year=year)
+        entries = Entry.objects.filter(created__year=year).order_by('-created')
     except Entry.DoesNotExist:
         raise Http404("Dieser Beitrag konnte leider nicht gefunden werden.")
     return render(request, 'blog/list.html', {'entries': entries})
@@ -28,7 +28,7 @@ def year(request, year):
 def month(request, year, month):
     try:
         entries = Entry.objects.filter(created__year=year,
-                                       created__month=month)
+                                       created__month=month).order_by('-created')
     except Entry.DoesNotExist:
         raise Http404("Dieser Beitrag konnte leider nicht gefunden werden.")
     return render(request, 'blog/list.html', {'entries': entries})
@@ -38,7 +38,7 @@ def day(request, year, month, day):
     try:
         entries = Entry.objects.filter(created__year=year,
                                        created__month=month,
-                                       created__day=day)
+                                       created__day=day).order_by('-created')
     except Entry.DoesNotExist:
         raise Http404("Dieser Beitrag konnte leider nicht gefunden werden.")
     return render(request, 'blog/list.html', {'entries': entries})
@@ -46,7 +46,7 @@ def day(request, year, month, day):
 
 def tag(request, tag):
     try:
-        entries = Entry.objects.filter(Q(tags=tag))
+        entries = Entry.objects.filter(Q(tags=tag)).order_by('-created')
     except Entry.DoesNotExist:
         raise Http404("Dieser Beitrag konnte leider nicht gefunden werden.")
     return render(request, 'blog/list.html', {'entries': entries})

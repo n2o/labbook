@@ -9,31 +9,32 @@
   {% if entries %}
     {% for entry in entries %}
       <div class="labbook-entry">
-        <h3>
-          {% if entry.title %}
-            {{ entry.title }}<br>
-          {% endif %}
-        </h3>
-        <h4>
-          <small>
-            {{ entry.created|date:"j. N Y" }}
-          </small>
-        </h4>
-
-        <p>
-          {{ entry.content|markdown }}
-        </p>
-
-        <p>
-          {% for tag in entry.tags.all %}
-            <span class="badge">{{ tag }}</span>
-          {% endfor %}
-        </p>
-
-        <p class="labbook-change text-muted">
-          <a href="{% url 'admin:index' %}blog/entry/{{ entry.id }}/change" class="text-muted">edit</a>
-          <a href="{% url 'admin:index' %}blog/entry/{{ entry.id }}/delete" class="text-muted">delete</a>
-        </p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              {% if entry.title %}
+                {{ entry.title }} -
+              {% endif %}
+              {{ entry.created|date:"j. N Y" }}
+            </h3>
+          </div>
+          <div class="panel-body">
+            {{ entry.content|markdown }}
+            <div class="row">
+              <div class="col-md-6">
+                {% for tag in entry.tags.all %}
+                  <span class="badge">{{ tag }}</span>
+                {% endfor %}
+              </div>
+              <div class="col-md-6 text-right">
+                <p class="labbook-change text-muted">
+                  <a href="{% url 'admin:index' %}blog/entry/{{ entry.id }}/change" class="text-muted">edit</a>
+                  <a href="{% url 'admin:index' %}blog/entry/{{ entry.id }}/delete" class="text-muted">delete</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     {% endfor %}
   {% else %}
