@@ -1,4 +1,4 @@
-Django==1.9b1
+Django==1.9rc1
 django-autoslug==1.9.3
 django-filer==1.0.2
 django-markdown-deux==1.0.5
