@@ -12,7 +12,6 @@
     <title>Labbook</title>
 
     {% load staticfiles %}
-    {% load flatpages %}
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
@@ -67,6 +66,7 @@
                 <li><a href="{% url 'general-idea' %}">General Idea</a></li>
               </ul>
             </li>
+            <li><a href="{% url 'definitions' %}">Definitions</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="http://stackoverflow.com/editing-help">SO Cheat Sheet</a></li>

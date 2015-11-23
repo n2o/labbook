@@ -134,6 +134,16 @@ THUMBNAIL_ALIASES = {
     },
 }
 
+# Markdown Deux
+MARKDOWN_DEUX_STYLES = {
+    "default": {
+        "extras": {
+            "code-friendly": None,
+        },
+        "safe_mode": False,
+    },
+}
+
 
 # Needed for login
 import django.contrib.auth
