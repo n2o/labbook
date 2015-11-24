@@ -7,32 +7,48 @@
 
 {% block content %}
   {% for item in items %}
-    <h3>{{ item.title }}</h3>
-    <a name="{{ item.title|lower }}"></a>
 
-    <p>
-      {{ item.content|markdown }}
-    </p>
 
-    {% if item.source %}
-      <p>
-        <a href="{{ item.source }}">source</a>
-      </p>
-    {% endif %}
+    <div class="labbook-entry">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {{ item.title }}
+          </h3>
+        </div>
+        <div class="panel-body">
+          {{ item.content|markdown }}
 
-    {% if item.related %}
-
-        {{ item.related }}
-      
-
-    {% endif %}
-
-    <p class="labbook-change text-muted">
-      <a href="{% url 'admin:index' %}wiki/item/{{ item.id }}/change" class="text-muted">edit</a>
-      <a href="{% url 'admin:index' %}wiki/item/{{ item.id }}/delete" class="text-muted">delete</a>
-    </p>
+          <p>
+            {% if item.source %}
+              <a href="{{ item.source }}">source</a>
+            {% endif %}
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              {% if item.related %}
+                <p>
+                  Related:
+                  {% for ritem in item.related.all %}
+                    <a href="#{{ ritem.title|lower }}">{{ ritem.title }}</a>
+                    {% if not forloop.last %}
+                      ,
+                    {% endif %}
+                  {% endfor %}
+                </p>
+              {% endif %}
+            </div>
+            <div class="col-md-6 text-right">
+              <p class="labbook-change text-muted">
+                <a href="{% url 'admin:index' %}wiki/item/{{ item.id }}/change" class="text-muted">edit</a>
+                <a href="{% url 'admin:index' %}wiki/item/{{ item.id }}/delete" class="text-muted">delete</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   {% endfor %}
-
   <p class="labbook-change text-muted">
     <a href="{% url 'admin:index' %}wiki/item/add" class="text-muted">add</a>
   </p>
