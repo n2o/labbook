@@ -15,10 +15,10 @@
           <h3 class="panel-title">
             {{ item.title }}
           </h3>
+          <a name="{{ item.title|slugify }}"></a>
         </div>
         <div class="panel-body">
           {{ item.content|markdown }}
-
           <p>
             {% if item.source %}
               <a href="{{ item.source }}">source</a>
@@ -30,7 +30,7 @@
                 <p>
                   Related:
                   {% for ritem in item.related.all %}
-                    <a href="#{{ ritem.title|lower }}">{{ ritem.title }}</a>
+                    <a href="#{{ ritem.title|slugify }}">{{ ritem.title }}</a>
                     {% if not forloop.last %}
                       ,
                     {% endif %}
