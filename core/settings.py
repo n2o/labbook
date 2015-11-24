@@ -57,6 +57,7 @@ INSTALLED_APPS = (
     # Own apps
     'polls',
     'blog',
+    'wiki',
 )
 
 MIDDLEWARE_CLASSES = (

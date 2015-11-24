@@ -21,6 +21,7 @@ urlpatterns = [
 
     # Own Apps
     url(r'^blog/', include('blog.urls', namespace='blog')),
+    url(r'^wiki/', include('wiki.urls', namespace='wiki')),
 
     # Flatpages
     url(r'^papers/general-idea/$', flatpageviews.flatpage, {'url': '/papers/general-idea/'}, name='general-idea'),

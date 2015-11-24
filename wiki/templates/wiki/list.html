@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+
+{% block heading %}
+  <h1>Wiki</h1>
+{% endblock %}
+
+{% block content %}
+  {% for item in items %}
+    <h3>{{ item.title }}</h3>
+    <a name="{{ item.title|lower }}"></a>
+
+    <p>
+      {{ item.content|markdown }}
+    </p>
+
+    {% if item.source %}
+      <p>
+        <a href="{{ item.source }}">source</a>
+      </p>
+    {% endif %}
+
+    {% if item.related %}
+
+        {{ item.related }}
+      
+
+    {% endif %}
+
+    <p class="labbook-change text-muted">
+      <a href="{% url 'admin:index' %}wiki/item/{{ item.id }}/change" class="text-muted">edit</a>
+      <a href="{% url 'admin:index' %}wiki/item/{{ item.id }}/delete" class="text-muted">delete</a>
+    </p>
+  {% endfor %}
+
+  <p class="labbook-change text-muted">
+    <a href="{% url 'admin:index' %}wiki/item/add" class="text-muted">add</a>
+  </p>
+{% endblock %}

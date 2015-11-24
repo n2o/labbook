@@ -6,16 +6,16 @@
 {% endblock %}
 
 {% block content %}
-    <p>
-      {{ flatpage.content|markdown }}
-    </p>
+  <p>
+    {{ flatpage.content|markdown }}
+  </p>
 
-    <p class="labbook-change text-muted">
-      <a href="{% url 'admin:index' %}flatpages/flatpage/{{ flatpage.id }}/change" class="text-muted">edit</a>
-      <a href="{% url 'admin:index' %}flatpages/flatpage/{{ flatpage.id }}/delete" class="text-muted">delete</a>
-    </p>
+  <p class="labbook-change text-muted">
+    <a href="{% url 'admin:index' %}flatpages/flatpage/{{ flatpage.id }}/change" class="text-muted">edit</a>
+    <a href="{% url 'admin:index' %}flatpages/flatpage/{{ flatpage.id }}/delete" class="text-muted">delete</a>
+  </p>
 
-    <p class="labbook-change text-muted">
-      <a href="{% url 'admin:index' %}flatpages/flatpage/add" class="text-muted">add</a>
-    </p>
+  <p class="labbook-change text-muted">
+    <a href="{% url 'admin:index' %}flatpages/flatpage/add" class="text-muted">add</a>
+  </p>
 {% endblock %}
