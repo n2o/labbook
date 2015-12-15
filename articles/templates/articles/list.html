@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+
+{% block heading %}
+  <h1>Testing Articles</h1>
+{% endblock %}
+
+{% block content %}
+  {% for article in articles %}
+    <h3>{{ article.title }} <small>{{ article.created }}</small></h3>
+    <p>
+      {{ article.content|striptags|truncatewords:50 }}
+    </p>
+    <p>
+      <a href="{% url 'articles:details' slug=article.slug %}">more</a>
+    </p>
+
+    {% if not forloop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+
+  <p class="labbook-change text-muted">
+    <a href="{% url 'admin:index' %}articles/article/add" class="text-muted">add</a>
+  </p>
+{% endblock %}

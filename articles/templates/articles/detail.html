@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load markdown_deux_tags %}
+
+{% block heading %}
+  <h1>{{ article.title }}</h1>
+{% endblock %}
+
+{% block content %}
+  <p>
+    {{ article.content|markdown }}
+  </p>
+
+  <p class="labbook-change text-muted">
+    <a href="{% url 'admin:index' %}articles/article/{{ article.id }}/change" class="text-muted">edit</a>
+    <a href="{% url 'admin:index' %}articles/article/{{ article.id }}/delete" class="text-muted">delete</a>
+  </p>
+
+  <hr>
+
+  <h3>Comments</h3>
+  {% for comment in comments %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          {{ comment.author }} <small>{{ comment.created }}</small>
+        </h3>
+      </div>
+      <div class="panel-body">
+        {{ comment.comment|markdown }}
+      </div>
+    </div>
+  {% empty %}
+    <p>There are currently no comments.</p>
+  {% endfor %}
+
+  <p class="labbook-change text-muted">
+    <a href="{% url 'admin:index' %}articles/comment/add" class="text-muted">add</a>
+  </p>
+{% endblock %}
