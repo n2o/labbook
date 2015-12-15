@@ -1,46 +1,26 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404
 from django.db.models import Q
 from .models import Entry
 
 
 def overview(request, category="Allgemein"):
-    try:
-        #category = Category.objects.filter(name=category)
-        entries = Entry.objects.all()
-
-    except Entry.DoesNotExist:
-        raise Http404("Diese Beiträge konnten leider nicht gefunden werden.")
-    return render(request, 'blog/overview.html',
-                  {'posts':     entries,
-                   #'category':  category[0]
-                   })
+    entries = get_list_or_404(Entry)
+    return render(request, 'blog/overview.html', {'posts': entries})
 
 
 def year(request, year):
-    try:
-        entries = Entry.objects.filter(created__year=year).order_by('-created')
-    except Entry.DoesNotExist:
-        raise Http404("Dieser Beitrag konnte leider nicht gefunden werden.")
+    entries = get_list_or_404(Entry.objects.order_by('-created'), created__year=year)
     return render(request, 'blog/list.html', {'entries': entries})
 
 
 def month(request, year, month):
-    try:
-        entries = Entry.objects.filter(created__year=year,
-                                       created__month=month).order_by('-created')
-    except Entry.DoesNotExist:
-        raise Http404("Dieser Beitrag konnte leider nicht gefunden werden.")
+    entries = get_list_or_404(Entry.objects.order_by('-created'), created__year=year, created__month=month)
     return render(request, 'blog/list.html', {'entries': entries})
 
 
 def day(request, year, month, day):
-    try:
-        entries = Entry.objects.filter(created__year=year,
-                                       created__month=month,
-                                       created__day=day).order_by('-created')
-    except Entry.DoesNotExist:
-        raise Http404("Dieser Beitrag konnte leider nicht gefunden werden.")
+    entries = get_list_or_404(Entry.objects.order_by('-created'), created__year=year, created__month=month, created__day=day)
     return render(request, 'blog/list.html', {'entries': entries})
 
 
