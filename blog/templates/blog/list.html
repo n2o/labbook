@@ -11,10 +11,14 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              {% if entry.title %}
-                {{ entry.title }} -
-              {% endif %}
-              {{ entry.created|date:"j. N Y" }}
+              <div class="row">
+                <div class="col-md-9">
+                  {{ entry.title }}
+                </div>
+                <div class="col-md-3 text-right">
+                  {{ entry.created|date:"j. N Y" }}
+                </div>
+              </div>
             </h3>
           </div>
           <div class="panel-body">

@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 {% load markdown_deux_tags %}
+{% load staticfiles %}
 
 {% block heading %}
   <h1>{{ article.title }}</h1>
 {% endblock %}
 
 {% block content %}
+  <script src="{% static 'assets/dwarf.js' %}"></script>
+
   <p>
     {{ article.content|markdown }}
   </p>

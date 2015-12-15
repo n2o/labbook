@@ -56,3 +56,5 @@ docs/_build/
 *.pyc
 /media
 db.sqlite3
+
+dwarf*
