@@ -5,12 +5,12 @@ from .models import Entry
 
 
 def overview(request, category="Allgemein"):
-    entries = get_list_or_404(Entry)
-    return render(request, 'blog/overview.html', {'posts': entries})
+    entries = Entry.objects.all().order_by('-created')
+    return render(request, 'blog/list.html', {'entries': entries})
 
 
 def year(request, year):
-    entries = get_list_or_404(Entry.objects.order_by('-created'), created__year=year)
+    entries = Entry.objects.filter(created__year=year).order_by('-created')
     return render(request, 'blog/list.html', {'entries': entries})
 
 

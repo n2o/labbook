@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 from django.contrib.flatpages import views as flatpageviews
+from blog import views as blogviews
 
 
 # Include these two lines to use the core/admin.py file
@@ -11,7 +12,7 @@ admin.autodiscover()
 import core.admin       # <-- this line *is* necessary
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', blogviews.overview, name='index'),
     url(r'^polls/', include('polls.urls', namespace='polls')),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^admin/', include(admin.site.urls)),

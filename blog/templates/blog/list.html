@@ -7,6 +7,9 @@
 {% block content %}
   {% if entries %}
     {% for entry in entries %}
+      {% ifchanged %}
+        <h2>{{ entry.created|date:"Y" }}</h2>
+      {% endifchanged %}
       <div class="labbook-entry">
         <div class="panel panel-default">
           <div class="panel-heading">

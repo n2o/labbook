@@ -7,7 +7,8 @@
 {% endblock %}
 
 {% block content %}
-  <script src="{% static 'assets/dwarf.js' %}"></script>
+  <script src="{% static 'assets/dwarfjs/js/dwarf.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'assets/dwarfjs/css/dwarf.css' %}">
 
   <p>
     {{ article.content|markdown }}
