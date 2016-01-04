@@ -48,7 +48,6 @@ INSTALLED_APPS = (
     # 3rd party
     'login',
     'autoslug',
-    'filer',
     'easy_thumbnails',
     'pytz',
     'pagedown',
