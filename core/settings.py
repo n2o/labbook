@@ -125,9 +125,6 @@ TEMPLATES = [
     },
 ]
 
-# Filer configuration
-FILER_CANONICAL_URL = 'share/'
-
 # Configure Easy Thumbnails
 THUMBNAIL_ALIASES = {
     '': {

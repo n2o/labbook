@@ -18,8 +18,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('login.urls', namespace='login')),
 
-    url(r'^filer/', include('filer.urls')),
-
     # Own Apps
     url(r'^blog/', include('blog.urls', namespace='blog')),
     url(r'^wiki/', include('wiki.urls', namespace='wiki')),
