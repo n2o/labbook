@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render, get_list_or_404
 from django.db.models import Q
 from .models import Entry
 
 
+@login_required
 def overview(request, category="Allgemein"):
     entries = Entry.objects.all().order_by('-created')
     return render(request, 'blog/list.html', {'entries': entries})

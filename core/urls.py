@@ -26,6 +26,7 @@ urlpatterns = [
     # Flatpages
     url(r'^papers/general-idea/$', flatpageviews.flatpage, {'url': '/papers/general-idea/'}, name='general-idea'),
     url(r'^ideas/integration-in-websites/$', flatpageviews.flatpage, {'url': '/ideas/integration-in-websites/'}, name='integration-in-websites'),
+    url(r'^dev/dwarfjs/$', flatpageviews.flatpage, {'url': '/dev/dwarfjs/'}, name='dwarfjs'),
     url(r'^dev/ff-extension/$', flatpageviews.flatpage, {'url': '/dev/ff-extension/'}, name='ff-extension'),
     url(r'^definitions/$', flatpageviews.flatpage, {'url': '/definitions/'}, name='definitions'),
 
