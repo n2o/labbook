@@ -56,4 +56,4 @@ docs/_build/
 /media
 db.sqlite3
 sass
-dwarf*
+discuss*

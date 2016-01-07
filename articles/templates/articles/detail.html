@@ -7,8 +7,8 @@
 {% endblock %}
 
 {% block content %}
-  <script src="{% static 'assets/dwarfjs/js/dwarf.js' %}"></script>
-  <link rel="stylesheet" href="{% static 'assets/dwarfjs/css/dwarf.css' %}">
+  <script src="{% static 'assets/discuss/js/discuss.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'assets/discuss/css/discuss.css' %}">
 
   <p>
     {{ article.content|markdown }}
@@ -21,21 +21,23 @@
 
   <hr>
 
-  <h3>Comments</h3>
-  {% for comment in comments %}
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          {{ comment.author }} <small>{{ comment.created }}</small>
-        </h3>
+  <section id="comments">
+    <h3>Comments</h3>
+    {% for comment in comments %}
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            {{ comment.author }} <small>{{ comment.created }}</small>
+          </h3>
+        </div>
+        <div class="panel-body">
+          {{ comment.comment|markdown }}
+        </div>
       </div>
-      <div class="panel-body">
-        {{ comment.comment|markdown }}
-      </div>
-    </div>
-  {% empty %}
-    <p>There are currently no comments.</p>
-  {% endfor %}
+    {% empty %}
+      <p>There are currently no comments.</p>
+    {% endfor %}
+  </section>
 
   <p class="labbook-change text-muted">
     <a href="{% url 'admin:index' %}articles/comment/add" class="text-muted">add</a>
