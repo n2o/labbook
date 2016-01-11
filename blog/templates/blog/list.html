@@ -25,7 +25,16 @@
             </h3>
           </div>
           <div class="panel-body">
-            {{ entry.content|markdown }}
+            <div class="row">
+              <div class="col-md-12">
+                {% if entry.image %}
+                  <a href="{{ entry.image.url }}">
+                    <img class="img-responsive img-thumbnail" src="{{ entry.image.url }}" width="500px" align="right">
+                  </a>
+                {% endif %}
+                {{ entry.content|markdown }}
+              </div>
+            </div>
             <div class="row">
               <div class="col-md-6">
                 {% for tag in entry.tags.all %}
@@ -34,8 +43,8 @@
               </div>
               <div class="col-md-6 text-right">
                 <p class="labbook-change text-muted">
-                  <a href="{% url 'admin:index' %}blog/entry/{{ entry.id }}/change" class="text-muted">edit</a>
-                  <a href="{% url 'admin:index' %}blog/entry/{{ entry.id }}/delete" class="text-muted">delete</a>
+                  <a href="{% url 'admin:blog_entry_change' entry.id %}" class="text-muted">edit</a>
+                  <a href="{% url 'admin:blog_entry_delete' entry.id %}" class="text-muted">delete</a>
                 </p>
               </div>
             </div>

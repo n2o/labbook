@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-  <script src="{% static 'assets/discuss/js/discuss.js' %}"></script>
+  <script src="{% static 'assets/discuss/js/discuss-compiled.js' %}"></script>
   <link rel="stylesheet" href="{% static 'assets/discuss/css/discuss.css' %}">
 
   <p>
@@ -15,31 +15,34 @@
   </p>
 
   <p class="labbook-change text-muted">
-    <a href="{% url 'admin:index' %}articles/article/{{ article.id }}/change" class="text-muted">edit</a>
-    <a href="{% url 'admin:index' %}articles/article/{{ article.id }}/delete" class="text-muted">delete</a>
+    <a href="{% url 'admin:articles_article_change' article.id %}" class="text-muted">edit</a>
+    <a href="{% url 'admin:articles_article_delete' article.id %}" class="text-muted">delete</a>
   </p>
 
   <hr>
 
   <section id="comments">
-    <h3>Comments</h3>
-    {% for comment in comments %}
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            {{ comment.author }} <small>{{ comment.created }}</small>
-          </h3>
+    <h3 data-toggle="collapse" data-target="#comments-list">
+      <i class="fa fa-users"></i> Comments
+    </h3>
+    <div id='comments-list' class="collapse in">
+      {% for comment in comments %}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              {{ comment.author }} <small>{{ comment.created }}</small>
+            </h3>
+          </div>
+          <div class="panel-body">
+            {{ comment.comment|markdown }}
+          </div>
         </div>
-        <div class="panel-body">
-          {{ comment.comment|markdown }}
-        </div>
-      </div>
-    {% empty %}
-      <p>There are currently no comments.</p>
-    {% endfor %}
+      {% empty %}
+        <p>There are currently no comments.</p>
+      {% endfor %}
+      <p class="labbook-change text-muted">
+        <a href="{% url 'admin:articles_comment_add' %}" class="text-muted">add</a>
+      </p>
+    </div>
   </section>
-
-  <p class="labbook-change text-muted">
-    <a href="{% url 'admin:index' %}articles/comment/add" class="text-muted">add</a>
-  </p>
 {% endblock %}
