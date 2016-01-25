@@ -1,12 +1,13 @@
-from django.conf.urls import patterns, include, url
-from login.views import *
+from django.conf.urls import url
 
-import login.urls
+from . import views
+import django.contrib.auth.views as authviews
 
-urlpatterns = patterns('',
-    url(r'^$', 'django.contrib.auth.views.login'),
-    url(r'^logout/$', logout_page),
-    url(r'^login/$', 'django.contrib.auth.views.login'), # If user is not login it will redirect to login page
-    url(r'^register/$', register),
-    url(r'^register/success/$', register_success),
-)
+
+urlpatterns = [
+    url(r'^$', authviews.login),
+    url(r'^logout/$', views.logout_page, name='logout'),
+    url(r'^login/$', authviews.login, name='login'),  # If user is not logged in, it will redirect to login page
+    url(r'^register/$', views.register, name='register'),
+    url(r'^register/success/$', views.register_success, name='register_success'),
+]
