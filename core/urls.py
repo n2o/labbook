@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls', namespace='polls')),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/', include('login.urls', namespace='login')),
+    url(r'^accounts/', include('login.urls', namespace='account')),
 
     # Own Apps
     url(r'^blog/', include('blog.urls', namespace='blog')),

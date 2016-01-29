@@ -15,6 +15,7 @@ class Blogadmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': AdminPagedownWidget}
     }
+    ordering = ['-created']
 
     def save_model(self, request, obj, form, change):
         # Automatic set author if None is set
