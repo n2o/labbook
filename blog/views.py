@@ -7,7 +7,7 @@ from .models import Entry
 
 @login_required
 def overview(request, category="Allgemein"):
-    entries = Entry.objects.all().order_by('-created')
+    entries = Entry.objects.all().order_by('-created')[:5]
     return render(request, 'blog/list.html', {'entries': entries})
 
 
