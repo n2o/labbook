@@ -23,7 +23,7 @@ class Tag(models.Model):
 
 
 class Entry(models.Model):
-    title = models.CharField('Title', max_length=50, blank=True)
+    title = models.CharField('Title', max_length=1024, blank=True)
     author = models.ForeignKey(User, null=True, blank=True, verbose_name="Author")
     content = models.TextField('Content', blank=False)
     image = models.ImageField('Image', null=True, blank=True)
