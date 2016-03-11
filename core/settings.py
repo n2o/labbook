@@ -54,7 +54,6 @@ INSTALLED_APPS = (
     'markdown_deux',
 
     # Own apps
-    'polls',
     'blog',
     'wiki',
     'articles',
